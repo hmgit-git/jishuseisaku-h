@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '製品登録')
+@section('title', '製品情報編集')
 
 @section('content_header')
-    <h1>製品登録</h1>
+    <h1>製品情報編集・削除</h1>
 @stop
 
 @section('content')
@@ -54,6 +54,10 @@
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">登録</button>
                     </div>
+                    <div class="delete">
+                        <a href="/items/destroy/{{ $item->id }}" class="btn">削除</a>
+                    </div>
+
                 </form>
             </div>
         </div>
