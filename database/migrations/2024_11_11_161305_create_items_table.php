@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->tinyInteger('type', 100);
-            $table->integer('quantity')->unsigned();
-            $table->integer('leadtime')->unsigned();
+            $table->string('type', 100);
+            $table->bigInteger('quantity')->unsigned();
+            $table->bigInteger('leadtime')->unsigned();
             $table->integer('price')->unsigned();
             $table->string('detail', 500);
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

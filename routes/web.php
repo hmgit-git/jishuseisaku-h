@@ -27,7 +27,13 @@ Route::prefix('items')->group(function () {
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::get('/edit/{id}', [ItemsController::class, 'edit']);
     Route::post('/update/{id}', [ItemsController::class, 'update'])->name('items.update');
-    Route::get('/destroy/{id}', [ItemsController::class, 'destroy']);
-    
+    Route::get('/destroy/{id}', [ItemsController::class, 'destroy']);   
 
 });
+
+    // 管理者の編集画面
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+

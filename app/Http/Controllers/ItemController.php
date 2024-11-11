@@ -38,14 +38,18 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|max:100',
+                'type' => 'required|max:100',
+                'quantity' => 'required',
+
             ]);
 
             // 商品登録
             Item::create([
                 'user_id' => Auth::user()->id,
-                'name' => $request->name,
                 'type' => $request->type,
+                'quantity'=> $request->quantity,
+                'leadtime'=> $request->leadtime,
+                'price'=> $request->price,
                 'detail' => $request->detail,
             ]);
 
