@@ -31,7 +31,6 @@
                                 <th>単価(円)</th>
                                 <th>詳細</th>
                                 <th>編集</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -43,6 +42,10 @@
                                     <td>{{ $item->leadtime }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td>
+                                        {{-- 編集ボタン --}}
+                                        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">編集</a> 
+                                    </td>                                
                                 </tr>
                             @endforeach
                         </tbody>
