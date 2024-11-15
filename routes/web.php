@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -32,8 +33,13 @@ Route::prefix('items')->group(function () {
 });
 
     // 管理者の編集画面
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
+// 編集画面表示
+Route::get('/users/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+
+// 更新処理
+Route::put('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+
+// 一覧表示と削除ルート（必要に応じて）
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
