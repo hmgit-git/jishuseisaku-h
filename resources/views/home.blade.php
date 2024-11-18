@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1 class="d-inline news-title">ニュース一覧</h1>
-    <a href="{{ route('news.index') }}" class="btn btn-primary float-right">ニュース登録</a>
+    <a href="{{ route('news.index') }}" class="btn btn-primary float-right">ニュース登録・削除</a>
 @stop
 <style>
     .news-title {
