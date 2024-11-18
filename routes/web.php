@@ -22,6 +22,12 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index'); // ニュース一覧
+Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store'); // ニュース追加
+Route::delete('/news/{id}', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.destroy'); // ニュース削除
+
+
 Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);

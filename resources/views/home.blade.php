@@ -1,17 +1,44 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Home')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1 class="d-inline news-title">ニュース一覧</h1>
+    <a href="{{ route('news.index') }}" class="btn btn-primary float-right">ニュース登録</a>
 @stop
+<style>
+    .news-title {
+        font-weight: bold;
+        color: navy; /* 紺色 */
+    }
+</style>
+
+
+
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+<div class="news-list">
+        @if($newsList->isEmpty())
+            <p>現在、ニュースはありません。</p>
+        @else
+            @foreach ($newsList as $news)
+                <div class="news-item">
+                    <h4>{{ $news->title }}</h4>
+                    <p>{{ $news->content }}</p>
+                    <small>投稿日: {{ $news->created_at->format('Y年m月d日') }}</small>
+                    <hr>
+                </div>
+            @endforeach
+        @endif
+</div>
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <style>
+        .news-item {
+            margin-bottom: 20px;
+        }
+    </style>
 @stop
 
 @section('js')

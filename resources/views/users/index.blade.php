@@ -3,8 +3,16 @@
 @section('title', 'ユーザ一覧')
 
 @section('content_header')
-    <h1>ユーザ一覧</h1>
+    <h1 class="d-inline users-title">ユーザ一覧</h1>
 @stop
+
+<style>
+    .users-title {
+        font-weight: bold;
+        color: navy; /* 紺色 */
+    }
+</style>
+
 
 @section('content')
     <div class="row">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $newsList = News::latest()->get(); // 最新のニュースを取得
+        return view('home', compact('newsList'));
+        $newsList = News::latest()->paginate(5); // 1ページあたり5件
+        return view('home', compact('newsList'));
     }
+
+
 }
