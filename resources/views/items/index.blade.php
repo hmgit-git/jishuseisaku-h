@@ -29,10 +29,13 @@
                             </div>
                             <div class="input-group-append ml-2"> <!-- 左にマージンを追加 -->
                                 <a href="{{ url('items') }}" class="btn btn-default">リセット</a>
+                            </div>
+                            <div class="input-group-append ml-2">
+                                <a href="{{ route('items.exportCsv') }}" class="btn btn-success">CSVダウンロード</a>
                             </div>    
                             @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
                             <div class="input-group-append ml-2"> <!-- 左にマージンを追加 -->
-                                <a href="{{ url('items/add') }}" class="btn btn-default">製品登録</a>
+                                <a href="{{ url('items/add') }}" class="btn btn-secondary">製品登録</a>
                             </div>
                             @endif
 

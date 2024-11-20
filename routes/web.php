@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('/items', [App\Http\Controllers\ItemController::class, 'index'])->name('items.index');
+    Route::get('/items/export/csv', [App\Http\Controllers\ItemController::class, 'exportCsv'])->name('items.exportCsv');
 });
 
 Route::group(['middleware' => ['auth', 'can:admin']], function (){
