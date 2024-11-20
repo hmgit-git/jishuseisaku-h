@@ -11,7 +11,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
          // 全ユーザーを取得
-        $users = User::all();
+        //$users = User::all();
+        $users = User::paginate(5); // 1ページに10件
+        return view('users.index', compact('users'));
+        
         // 検索キーワードを取得
         $search = $request->input('search');
 
@@ -21,6 +24,7 @@ class UserController extends Controller
         })->get();
 
         return view('users.index', compact('users', 'search'));
+        
     }
 
     //ユーザ情報編集ページ

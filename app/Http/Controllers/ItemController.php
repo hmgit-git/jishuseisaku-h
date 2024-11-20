@@ -15,7 +15,9 @@ class ItemController extends Controller
 
     public function index()
     {
-        $items = Item::all();
+        //$items = Item::all();
+        $items = Item::paginate(5); // 1ページ5件
+
         return view('items.index', compact('items'));
     }
 

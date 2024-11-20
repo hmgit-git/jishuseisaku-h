@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newsList = News::latest()->get(); // 最新のニュースを取得
-        return view('home', compact('newsList'));
+        //$newsList = News::latest()->get(); // 最新のニュースを取得
+        //return view('home', compact('newsList'));
         $newsList = News::latest()->paginate(5); // 1ページあたり5件
         return view('home', compact('newsList'));
     }

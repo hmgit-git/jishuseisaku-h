@@ -20,8 +20,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">ユーザ一覧</h3>
-                    <div class="card-tools">
-                    </div>
+                    <div class="card-tools"></div>
                 </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
@@ -62,6 +61,12 @@
                         </tbody>
                     </table>
                 </div>
+
+                    <!-- ページネーション -->
+                    {{ $users->links('pagination::bootstrap-5') }}
+
+
+
             </div>
         </div>
     </div>

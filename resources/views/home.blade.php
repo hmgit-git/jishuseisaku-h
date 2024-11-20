@@ -31,6 +31,11 @@
             @endforeach
         @endif
 </div>
+
+    <!-- ページネーション -->
+    {{ $newsList->links('pagination::bootstrap-5') }}
+
+
 @stop
 
 @section('css')
