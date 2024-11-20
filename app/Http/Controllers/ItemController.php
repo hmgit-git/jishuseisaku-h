@@ -13,13 +13,25 @@ class ItemController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        //$items = Item::all();
-        $items = Item::paginate(5); // 1ページ5件
+    public function index(Request $request)
+{
+    // クエリビルダーの準備
+    $query = Item::query();
 
-        return view('items.index', compact('items'));
+    // 検索条件が指定されている場合の処理
+    if ($request->filled('keyword')) {
+        $keyword = $request->input('keyword');
+        $query->where('type', 'LIKE', "%{$keyword}%")
+              ->orWhere('detail', 'LIKE', "%{$keyword}%");
     }
+
+    // ページネーションでデータを取得
+    $items = $query->paginate(5);
+
+    // ビューにデータを渡す
+    return view('items.index', compact('items'));
+}
+
 
     public function add(Request $request)
     {
@@ -78,5 +90,5 @@ class ItemController extends Controller
 
         // 製品一覧ページにリダイレクト
         return redirect()->route('items.index')->with('success', '製品情報が更新されました。');
-    }
+    }   
 }

@@ -9,23 +9,23 @@ class UserController extends Controller
 {
     // ユーザー一覧画面を表示
     public function index(Request $request)
-    {
-         // 全ユーザーを取得
-        //$users = User::all();
-        $users = User::paginate(5); // 1ページに10件
-        return view('users.index', compact('users'));
-        
-        // 検索キーワードを取得
-        $search = $request->input('search');
+{
+    // クエリビルダーの準備
+    $query = User::query();
 
-        // クエリビルダを使って名前で検索
-        $users = User::when($search, function($query, $search) {
-            return $query->where('name', 'like', '%' . $search . '%');
-        })->get();
-
-        return view('users.index', compact('users', 'search'));
-        
+    // 検索条件が指定されている場合の処理
+    if ($request->filled('keyword')) {
+        $keyword = $request->input('keyword');
+        $query->where('name', 'LIKE', "%{$keyword}%")
+              ->orWhere('department', 'LIKE', "%{$keyword}%");
     }
+
+    // ページネーションでデータを取得
+    $users = $query->paginate(5);
+
+    // ビューにデータを渡す
+    return view('users.index', compact('users'));
+}
 
     //ユーザ情報編集ページ
     public function edit($id)

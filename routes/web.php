@@ -37,6 +37,9 @@ Route::prefix('items')->group(function () {
 
     Route::get('/destroy/{id}', [App\Http\Controllers\ItemController::class, 'destroy']); 
     Route::get('/items/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
+
+    Route::get('/search', [App\Http\Controllers\ItemController::class, 'search']);
+
   
 
 });

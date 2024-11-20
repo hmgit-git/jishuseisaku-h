@@ -20,7 +20,17 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">ユーザ一覧</h3>
-                    <div class="card-tools"></div>
+                    <div class="card-tools">
+                        <form action="{{ url('users') }}" method="GET" class="input-group input-group">
+                            <input type="text" name="keyword" class="form-control" placeholder="キーワードで検索" value="{{ request('keyword') }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">検索</button>
+                            </div>
+                            <div class="input-group-append ml-2"> <!-- 左にマージンを追加 -->
+                                <a href="{{ url('users') }}" class="btn btn-default">リセット</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
@@ -33,8 +43,9 @@
                                 <th>登録日時</th>
                                 <th>更新日時</th>
                                 <th>編集権限</th>
+                                @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
                                 <th>編集</th>
-
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +65,9 @@
                                 @endif
                                 </td>                               
                                 <td style="width: 5%;">
+                                @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">編集</a>
+                                @endif
                                 </td>
                             </tr>
                             @endforeach

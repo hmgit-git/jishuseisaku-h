@@ -18,16 +18,28 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+
                 <div class="card-header">
                     <h3 class="card-title">製品一覧</h3>
                     <div class="card-tools">
-                        <div class="input-group input-group-sm">
+                        <form action="{{ url('items') }}" method="GET" class="input-group input-group">
+                            <input type="text" name="keyword" class="form-control" placeholder="キーワードで検索" value="{{ request('keyword') }}">
                             <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">検索</button>
+                            </div>
+                            <div class="input-group-append ml-2"> <!-- 左にマージンを追加 -->
+                                <a href="{{ url('items') }}" class="btn btn-default">リセット</a>
+                            </div>    
+                            @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
+                            <div class="input-group-append ml-2"> <!-- 左にマージンを追加 -->
                                 <a href="{{ url('items/add') }}" class="btn btn-default">製品登録</a>
                             </div>
-                        </div>
+                            @endif
+
+                        </form>
                     </div>
                 </div>
+
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>
@@ -38,7 +50,9 @@
                                 <th>納期(週)</th>
                                 <th>単価(円)</th>
                                 <th>詳細</th>
+                                @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
                                 <th>編集</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +66,9 @@
                                     <td>{{ $item->detail }}</td>
                                     <td>
                                         {{-- 編集ボタン --}}
+                                        @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
                                         <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">編集</a> 
+                                        @endif
                                     </td>                                
                                 </tr>
                             @endforeach
