@@ -62,4 +62,23 @@ class UserController extends Controller
     // ユーザー一覧ページにリダイレクト
     return redirect()->route('users.index')->with('success', 'ユーザー情報が更新されました。');
 }
+
+public function destroy($id)
+{
+// IDで製品を取得
+$user = User::find($id);
+
+// 製品が見つからない場合の処理
+if (!$user) {
+    return redirect()->route('users.index')->with('error', 'ユーザが見つかりませんでした');
+}
+
+// 製品を削除
+$user->delete();
+
+// 製品一覧ページにリダイレクト
+return redirect()->route('users.index')->with('success', 'ユーザが削除されました');
+}
+
+
 }

@@ -91,4 +91,22 @@ class ItemController extends Controller
         // 製品一覧ページにリダイレクト
         return redirect()->route('items.index')->with('success', '製品情報が更新されました。');
     }   
+
+    public function destroy($id)
+    {
+    // IDで製品を取得
+    $item = Item::find($id);
+
+    // 製品が見つからない場合の処理
+    if (!$item) {
+        return redirect()->route('items.index')->with('error', '製品が見つかりませんでした');
+    }
+
+    // 製品を削除
+    $item->delete();
+
+    // 製品一覧ページにリダイレクト
+    return redirect()->route('items.index')->with('success', '製品が削除されました');
+    }
+
 }

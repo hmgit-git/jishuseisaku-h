@@ -33,9 +33,7 @@ Route::prefix('items')->group(function () {
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::put('/update/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
-    Route::get('/{id}/destroy', [App\Http\Controllers\ItemController::class, 'destroy'])->name('items.destroy');
-
-    Route::get('/destroy/{id}', [App\Http\Controllers\ItemController::class, 'destroy']); 
+    Route::delete('/items/{id}/destroy', [App\Http\Controllers\ItemController::class, 'destroy'])->name('items.destroy');
     Route::get('/items/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
 
     Route::get('/search', [App\Http\Controllers\ItemController::class, 'search']);
@@ -58,4 +56,4 @@ Route::put('/users/{id}', [App\Http\Controllers\UserController::class, 'update']
 
 // 一覧表示と削除ルート（必要に応じて）
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-Route::delete('/users/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+Route::delete('/users/{id}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
