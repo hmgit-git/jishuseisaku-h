@@ -70,7 +70,7 @@
                                     <td>
                                         {{-- 編集ボタン --}}
                                         @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
-                                        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-primary btn-sm">編集</a> 
+                                        <a href="{{ route('items.edit', $item->id) }}" class="btn btn-info btn-sm">編集</a> 
                                         @endif
                                     </td>                                
                                 </tr>

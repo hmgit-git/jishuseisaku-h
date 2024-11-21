@@ -5,7 +5,7 @@
 @section('content_header')
     <h1 class="d-inline news-title">ニュース一覧</h1>
     @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
-    <a href="{{ route('news.index') }}" class="btn btn-primary float-right">ニュース登録・削除</a>
+    <a href="{{ route('news.index') }}" class="btn btn-info float-right">ニュース登録・削除</a>
     @endif
 @stop
 <style>

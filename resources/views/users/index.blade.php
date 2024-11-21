@@ -66,7 +66,7 @@
                                 </td>                               
                                 <td style="width: 5%;">
                                 @if (auth()->user() && auth()->user()->role == 1) <!-- role=1 の場合 -->
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">編集</a>
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm">編集</a>
                                 @endif
                                 </td>
                             </tr>
