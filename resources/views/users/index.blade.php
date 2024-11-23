@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'ユーザ一覧')
+@section('title', 'ユーザー一覧')
 
 @section('content_header')
-    <h1 class="d-inline users-title">ユーザ一覧</h1>
+    <h1 class="d-inline users-title">ユーザー一覧</h1>
 @stop
 
 <style>
@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">ユーザ一覧</h3>
+                    <h3 class="card-title">ユーザー一覧</h3>
                     <div class="card-tools">
                         <form action="{{ url('users') }}" method="GET" class="input-group input-group">
                             <input type="text" name="keyword" class="form-control" placeholder="キーワードで検索" value="{{ request('keyword') }}">

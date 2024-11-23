@@ -296,7 +296,7 @@ return [
             'icon' => 'fas fa-gamepad',
         ],
         [
-            'text' => 'ユーザ一覧',
+            'text' => 'ユーザー一覧',
             'route' => 'users.index',
             'icon' => 'fas fa-fw fa-user',
         ],
