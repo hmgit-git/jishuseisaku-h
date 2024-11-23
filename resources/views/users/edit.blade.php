@@ -1,7 +1,7 @@
 @extends('adminlte::page')
-@section('title', 'ユーザ情報編集')
+@section('title', 'ユーザー情報編集')
 @section('content_header')
-    <h1>ユーザ情報編集</h1>
+    <h1>ユーザー情報編集</h1>
 @stop
 
 @section('content')
@@ -56,12 +56,12 @@
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="margin-top: 0px;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">ユーザから削除　</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">ユーザーから削除　</button>
                         </form>
                     </div>    
 
                     <div class="card-footer">
-                        <a href="{{ route('users.index') }}" class="btn btn-secondary">ユーザ一覧に戻る</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-secondary">ユーザー一覧に戻る</a>
                     </div>
 
 
