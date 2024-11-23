@@ -48,7 +48,7 @@
 
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">編集内容を登録　</button>
+                        <button type="submit" class="btn btn-primary">　編集内容を登録　</button>
                     </div>
                 </form>                
                 
@@ -56,7 +56,7 @@
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="margin-top: 0px;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">ユーザーから削除　</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">ユーザー情報を削除</button>
                         </form>
                     </div>    
 
