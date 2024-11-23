@@ -39,6 +39,11 @@ class ItemController extends Controller
             $this->validate($request, [
                 'type' => 'required|max:100',
                 'quantity' => 'required',
+                'quantity'=> 'required',
+                'leadtime'=> 'required',
+                'price'=> 'required',
+                'detail' => 'required',
+
             ]);
 
             Item::create([
