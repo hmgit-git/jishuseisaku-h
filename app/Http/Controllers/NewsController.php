@@ -25,8 +25,8 @@ class NewsController extends Controller
             'title' => 'required|string|max:100',
             'content' => 'required|string|max:500',
         ],[
-                'title.max' => 'タイトルの文字数が多すぎます。',
-                'content.max' => '内容の文字数が多すぎます。',
+                'title.max' => 'The title field must not be greater than 100 characters.',
+                'content.max' => 'The content field must not be greater than 500 characters.',
         ]);
 
         News::create([
