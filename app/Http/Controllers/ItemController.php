@@ -38,13 +38,14 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             $this->validate($request, [
                 'type' => 'required|max:100',
-                'quantity' => 'required',
-                'quantity'=> 'required',
-                'leadtime'=> 'required',
-                'price'=> 'required',
-                'detail' => 'required',
+                'quantity' => 'required|numeric|min:1|max:1000000', // 最大値設定,
+                'leadtime'=> 'required|numeric|min:1|max:100', // 最大値設定,
+                'price'=> 'required|numeric|min:0|max:99999999.99', // 小数点以下対応,
+                'detail' => 'required|string|max:500', // 上限,
 
             ]);
+
+        
 
             Item::create([
                 'user_id' => Auth::user()->id,
@@ -54,6 +55,8 @@ class ItemController extends Controller
                 'price'=> $request->price,
                 'detail' => $request->detail,
             ]);
+
+            
 
             return redirect('/items');
         }
@@ -75,22 +78,12 @@ class ItemController extends Controller
         // IDで製品を取得
         $item = Item::findOrFail($id);
 
-        // バリデーション
         $validatedData = $request->validate([
-            'type' => 'required|string|max:255',
-            'quantity' => 'required|numeric',
-            'leadtime' => 'required|numeric',
-            'price' => 'required|numeric',
-            'detail' => 'required|string|max:255',
-        ], [
-            'type.required' => '製品名は必須項目です。',
-            'quantity.required' => '最小受注数量を入力してください。',
-            'quantity.numeric' => '最小受注数量は数値でなければなりません。',
-            'leadtime.required' => '納期が何週間か入力してください。',
-            'leadtime.numeric' => '納期は数値でなければなりません。',
-            'price.required' => '単価を入力してください。',
-            'price.numeric' => '単価は数値でなければなりません。',
-            'detail.required' => '詳細情報を入力してください。',
+            'type' => 'required|max:100',
+            'quantity' => 'required|numeric|min:1|max:1000000', // 最大値設定,
+            'leadtime'=> 'required|numeric|min:1|max:100', // 最大値設定,
+            'price'=> 'required|numeric|min:0|max:99999999.99', // 小数点以下対応,
+            'detail' => 'required|string|max:500', //上限,
         ]);
         
         // 製品情報を更新
