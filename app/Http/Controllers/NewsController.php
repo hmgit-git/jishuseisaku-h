@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response; // ここを追加
 
 class NewsController extends Controller
 {
@@ -20,8 +22,11 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
+            'title' => 'required|string|max:100',
+            'content' => 'required|string|max:500',
+        ],[
+                'title.max' => 'タイトルの文字数が多すぎます。',
+                'content.max' => '内容の文字数が多すぎます。',
         ]);
 
         News::create([
