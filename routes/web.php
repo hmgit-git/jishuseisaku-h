@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/items/export/csv', [App\Http\Controllers\ItemController::class, 'exportCsv'])->name('items.exportCsv');
 });
 
-Route::group(['middleware' => ['auth', 'can:admin']], function (){
+//Route::group(['middleware' => ['auth', 'can:admin']], function (){
 
     Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index'); // ニュース一覧
     Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store'); // ニュース追加
@@ -45,4 +45,4 @@ Route::group(['middleware' => ['auth', 'can:admin']], function (){
     Route::put('/users/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     // 削除ルート（必要に応じて）
     Route::delete('/users/{id}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
-});    
+//});    
